@@ -14,6 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Video
 {
+
+    const TYPE_FILM          = 'Film';
+    const TYPE_SERIE         = 'Série';
+    const TYPE_COURT_METRAGE = 'Court métrage';
+
     /**
      * @var int
      *
@@ -306,13 +311,13 @@ class Video
     /**
      * @param string $typeClass
      * @ORM\PrePersist()
-     * @ORM\PostPersist()
      * @ORM\PreUpdate()
      */
     public function setTypeClass($typeClass)
     {
-        $slugify = new Slugify();
+        $slugify         = new Slugify();
         $this->typeClass = $slugify->slugify($this->getType());
     }
+
 }
 

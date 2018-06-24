@@ -42,9 +42,8 @@ class VideoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $video->setDuration(self::durationParser($video));
             ($video->getDate()) ? $video->setDate(DateTime::createFromFormat('Y', $video->getDate())) : null;
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
@@ -85,6 +84,8 @@ class VideoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $video->setDuration(self::durationParser($video));
             ($video->getDate()) ? $video->setDate(DateTime::createFromFormat('Y', $video->getDate())) : null;
             $this->getDoctrine()->getManager()->flush();
 
@@ -130,5 +131,22 @@ class VideoController extends Controller
                     ->setMethod('DELETE')
                     ->getForm()
             ;
+    }
+
+
+    private function durationParser(Video $video)
+    {
+        $durationExploded = explode('h', strtolower($video->getDuration()));
+
+        if (count($durationExploded) == 1) {
+            return (int)$video->getDuration();
+        }
+        $heures  = $durationExploded[0];
+        $minutes = $durationExploded[1];
+
+        (strlen($minutes) == 1) ? $minutes = '0' . $minutes : $minutes = $minutes;
+        (strlen($minutes) == 0) ? $minutes = 0 : $minutes = $minutes;
+        $minutes = $minutes + $heures * 60;
+        return $minutes;
     }
 }

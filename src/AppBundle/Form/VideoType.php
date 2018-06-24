@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Video;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -25,16 +26,16 @@ class VideoType extends AbstractType
             ->add('type', ChoiceType::class, [
                 'label'   => 'Type du média',
                 'choices' => [
-                    'Film'          => 'Film',
-                    'Série'         => 'Série',
-                    'Court métrage' => 'Court métrage',
+                    'Film'          => Video::TYPE_FILM,
+                    'Série'         => Video::TYPE_SERIE,
+                    'Court métrage' => Video::TYPE_COURT_METRAGE,
                 ],
             ])
             ->add('resume', TextareaType::class, [
                 'label'    => 'Résumé',
                 'required' => false,
             ])
-            ->add('duration', NumberType::class, [
+            ->add('duration', TextType::class, [
                 'label'    => 'Duré en minute',
                 'required' => false,
             ])
