@@ -1,0 +1,13 @@
+$perso-primary: #FF6C06;
+$perso-secondary: #06ECFF;
+$perso-primary-light: lighten($perso-primary, 10);
+$perso-primary-dark: darken($perso-primary, 10);
+$perso-secondary-light: lighten($perso-secondary, 10);
+$perso-secondary-dark: darken($perso-secondary, 10);
+
+$theme-colors: (
+        "custom-primary": $perso-primary,
+        "custom-secondary": $perso-secondary,
+);
+
+$border-radius:0;

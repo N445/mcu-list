@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Site{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('dist/style.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    {% if is_granted('ROLE_ADMIN') %}
+        <link rel="stylesheet" href="{{ asset('dist/admin-style.css') }}">
+    {% endif %}
+</head>
+<body>
+{% if is_granted('ROLE_ADMIN') %}
+    {% include '@App/admin/navigation.html.twig' %}
+{% endif %}
+{% block body %}{% endblock %}
+<script src="{{ asset('dist/app.js') }}"></script>
+{% if is_granted('ROLE_ADMIN') %}
+    <script src="{{ asset('dist/admin-js.js') }}"></script>
+{% endif %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

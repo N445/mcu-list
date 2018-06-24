@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Video</h1>
+
+        <table>
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ video.title }}</td>
+            </tr>
+            <tr>
+                <th>Resume</th>
+                <td>{{ video.resume }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ video.duration }}</td>
+            </tr>
+            <tr>
+                <th>Downloaded</th>
+                <td>{% if video.downloaded %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Viewed</th>
+                <td>{% if video.viewed %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{% if video.active %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('video_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('video_edit', { 'id': video.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

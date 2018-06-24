@@ -1,0 +1,11 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+    filter_sets:
+        cache: ~
+        skill_home:
+            quality: 100
+            filters:
+                relative_resize:
+                    heighten: 70
