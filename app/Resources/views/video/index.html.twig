@@ -29,9 +29,9 @@
                     <td>{{ video.title }}</td>
                     <td>{{ video.type }}</td>
                     <td>{{ video.resume }}</td>
+                    <td>{{ video.duration }}</td>
                     <td>{{ video.date|date('Y') }}</td>
                     <td>{{ video.ordre }}</td>
-                    <td>{{ video.duration }}</td>
                     <td>{% if video.downloaded %}<span class="badge badge-success">Oui</span>{% else %}<span class="badge badge-danger">Non</span>{% endif %}</td>
                     <td>{% if video.viewed %}<span class="badge badge-success">Oui</span>{% else %}<span class="badge badge-danger">Non</span>{% endif %}</td>
                     <td>{% if video.active %}<span class="badge badge-success">Oui</span>{% else %}<span class="badge badge-danger">Non</span>{% endif %}</td>
