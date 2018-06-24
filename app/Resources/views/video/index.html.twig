@@ -2,8 +2,10 @@
 
 {% block body %}
     <div class="container">
-        <h1>Videos list</h1>
-
+        <h1>Liste des vidéos</h1>
+        <p>
+            <a href="{{ path('video_new') }}" class="btn btn-outline-success">Ajouter une vidéo</a>
+        </p>
         <table class="table">
             <thead>
             <tr>
@@ -30,29 +32,19 @@
                     <td>{{ video.date|date('Y') }}</td>
                     <td>{{ video.ordre }}</td>
                     <td>{{ video.duration }}</td>
-                    <td>{% if video.downloaded %}Yes{% else %}No{% endif %}</td>
-                    <td>{% if video.viewed %}Yes{% else %}No{% endif %}</td>
-                    <td>{% if video.active %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if video.downloaded %}<span class="badge badge-success">Oui</span>{% else %}<span class="badge badge-danger">Non</span>{% endif %}</td>
+                    <td>{% if video.viewed %}<span class="badge badge-success">Oui</span>{% else %}<span class="badge badge-danger">Non</span>{% endif %}</td>
+                    <td>{% if video.active %}<span class="badge badge-success">Oui</span>{% else %}<span class="badge badge-danger">Non</span>{% endif %}</td>
                     <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('video_show', { 'id': video.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('video_edit', { 'id': video.id }) }}">edit</a>
-                            </li>
-                        </ul>
+                                <a href="{{ path('video_show', { 'id': video.id }) }}" class="btn btn-sm btn-outline-info">Voir</a>
+
+                                <a href="{{ path('video_edit', { 'id': video.id }) }}" class="btn btn-sm btn-outline-primary">Modifier</a>
+
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-
-        <ul>
-            <li>
-                <a href="{{ path('video_new') }}">Create a new video</a>
-            </li>
-        </ul>
     </div>
 
 {% endblock %}
