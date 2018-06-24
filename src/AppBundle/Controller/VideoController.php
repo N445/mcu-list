@@ -34,8 +34,10 @@ class VideoController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $video = new Video();
-        $form  = $this->createForm('AppBundle\Form\VideoType', $video);
+        $video->setOrdre($this->getDoctrine()->getManager()->getRepository('AppBundle:Video')->getMaxOrderValue()->getOrdre() + 10);
+        $form = $this->createForm('AppBundle\Form\VideoType', $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

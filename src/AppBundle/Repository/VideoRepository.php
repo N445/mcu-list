@@ -10,4 +10,20 @@ namespace AppBundle\Repository;
  */
 class VideoRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getMaxOrderValue()
+    {
+        $qb = $this->createQueryBuilder('v')
+                   ->addSelect('v')
+                   ->orderBy('v.ordre', 'DESC')
+                   ->setMaxResults(1)
+                   ->getQuery()
+        ;
+        return $qb->getOneOrNullResult();
+    }
+
 }
