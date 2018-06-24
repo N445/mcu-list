@@ -306,6 +306,7 @@ class Video
     /**
      * @param string $typeClass
      * @ORM\PrePersist()
+     * @ORM\PostPersist()
      * @ORM\PreUpdate()
      */
     public function setTypeClass($typeClass)
