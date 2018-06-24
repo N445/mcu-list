@@ -12,6 +12,8 @@
                 <th>Type</th>
                 <th>Resume</th>
                 <th>Duration</th>
+                <th>Date</th>
+                <th>Ordre</th>
                 <th>Downloaded</th>
                 <th>Viewed</th>
                 <th>Active</th>
@@ -25,6 +27,8 @@
                     <td>{{ video.title }}</td>
                     <td>{{ video.type }}</td>
                     <td>{{ video.resume }}</td>
+                    <td>{{ video.date|date('Y') }}</td>
+                    <td>{{ video.ordre }}</td>
                     <td>{{ video.duration }}</td>
                     <td>{% if video.downloaded %}Yes{% else %}No{% endif %}</td>
                     <td>{% if video.viewed %}Yes{% else %}No{% endif %}</td>

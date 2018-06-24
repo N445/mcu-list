@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Video</h1>
 
-        <table>
+        <table class="table">
             <tbody>
             <tr>
                 <th>Id</th>
@@ -21,6 +21,14 @@
             <tr>
                 <th>Duration</th>
                 <td>{{ video.duration }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ video.date|date('Y') }}</td>
+            </tr>
+            <tr>
+                <th>Ordre</th>
+                <td>{{ video.ordre }}</td>
             </tr>
             <tr>
                 <th>Downloaded</th>

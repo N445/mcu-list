@@ -40,7 +40,7 @@ class VideoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $video->setDate(DateTime::createFromFormat('Y', $video->getDate()));
+            ($video->getDate())?$video->setDate(DateTime::createFromFormat('Y', $video->getDate())):null;
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
@@ -81,8 +81,7 @@ class VideoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
-            $video->setDate(DateTime::createFromFormat('Y', $video->getDate()));
+            ($video->getDate())?$video->setDate(DateTime::createFromFormat('Y', $video->getDate())):null;
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('video_edit', ['id' => $video->getId()]);
