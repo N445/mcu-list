@@ -1,9 +1,18 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
-@import "sections/header";
-@import "sections/navigation";
-@import "sections/school";
-@import "sections/job";
-@import "sections/skill";
-@import "sections/contact";
-@import "sections/footer";
+
+$color-film: #9570e5;
+$color-serie: #76e881;
+$color-court-metrage: #ff992d;
+
+.film {
+  border-left: 5px solid $color-film;
+}
+
+.serie {
+  border-left: 5px solid $color-serie;
+}
+
+.court-metrage {
+  border-left: 5px solid $color-court-metrage;
+}

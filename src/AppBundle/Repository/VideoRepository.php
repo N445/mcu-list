@@ -26,4 +26,22 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getOneOrNullResult();
     }
 
+    public function getVideoByOrdreAdmin()
+    {
+        $qb = $this->createQueryBuilder('v')
+                   ->orderBy('v.ordre', 'ASC')
+                   ->getQuery()
+        ;
+        return $qb->execute();
+    }
+    public function getVideoByOrdre()
+    {
+        $qb = $this->createQueryBuilder('v')
+                   ->where('v.active = 1')
+                   ->orderBy('v.ordre', 'ASC')
+                   ->getQuery()
+        ;
+        return $qb->execute();
+    }
+
 }

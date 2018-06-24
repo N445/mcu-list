@@ -1,5 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    Mon site
+    <div class="container">
+        {% for video in videos %}
+            <div class="mb-1 card {{ video.typeClass }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ video.title }}{% if video.date %} - {{ video.date|date('Y') }}{% endif %}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ video.type }}</h6>
+                    {% if video.resume %}
+                        <p class="card-text">{{ video.resume }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

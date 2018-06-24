@@ -8,8 +8,9 @@ class DefaultController extends Controller
 {
     public function homepageAction()
     {
+        $videos = $this->getDoctrine()->getManager()->getRepository('AppBundle:Video')->getVideoByOrdre();
         return $this->render('@App/default/homepage.html.twig', [
-
+            'videos' => $videos,
         ]);
     }
 

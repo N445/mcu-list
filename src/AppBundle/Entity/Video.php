@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="video")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VideoRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Video
 {
@@ -57,6 +59,13 @@ class Video
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type_class", type="string")
+     */
+    private $typeClass;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime", nullable=true)
@@ -83,7 +92,6 @@ class Video
      * @ORM\Column(name="active", type="boolean", nullable=true)
      */
     private $active;
-
 
     /**
      * Get id
@@ -285,6 +293,25 @@ class Video
     public function setDate($date)
     {
         $this->date = $date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeClass()
+    {
+        return $this->typeClass;
+    }
+
+    /**
+     * @param string $typeClass
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function setTypeClass($typeClass)
+    {
+        $slugify = new Slugify();
+        $this->typeClass = $slugify->slugify($this->getType());
     }
 }
 

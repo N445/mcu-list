@@ -21,7 +21,7 @@ class VideoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $videos = $em->getRepository('AppBundle:Video')->findAll();
+        $videos = $em->getRepository('AppBundle:Video')->getVideoByOrdreAdmin();
 
         return $this->render('video/index.html.twig', [
             'videos' => $videos,

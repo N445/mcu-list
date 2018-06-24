@@ -1,8 +1,0 @@
-node_modules/
-.idea/
-npm-debug.log
-coverage
-docs
-local_testing
-tinypicker.css
-*.md
