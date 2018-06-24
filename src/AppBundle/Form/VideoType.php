@@ -25,8 +25,9 @@ class VideoType extends AbstractType
             ->add('type', ChoiceType::class, [
                 'label'   => 'Type du média',
                 'choices' => [
-                    'Film'  => 'Film',
-                    'Série' => 'Série',
+                    'Film'          => 'Film',
+                    'Série'         => 'Série',
+                    'Court métrage' => 'Court métrage',
                 ],
             ])
             ->add('resume', TextareaType::class, [
